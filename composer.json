@@ -1,0 +1,33 @@
+{
+  "name": "orukusaki/twilio-bundle",
+  "description": "Twilio Integration bundle for Symfony2",
+  "keywords": ["Symfony", "Symfony2", "Bundle", "Twilio", "TwiML", "twiml"],
+  "minimum-stability": "alpha",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Peter Smith",
+      "email": "peter@orukusaki.co.uk"
+    }
+  ],
+  "require": {
+      "php": ">=5.5",
+      "symfony/symfony": "~2.5",
+      "orukusaki/twiml": "~0.1",
+      "twilio/sdk": "~3.12",
+      "sensio/framework-extra-bundle": "~3.0"
+  },
+  "config": {
+    "bin-dir": "bin"
+  },
+  "autoload": {
+    "psr-4": {
+      "Orukusaki\\TwilioBundle\\": "src/"
+    }
+  },
+  "require-dev": {
+      "behat/behat": "~3.0",
+      "behat/symfony2-extension": "~2.0",
+      "bossa/phpspec2-expect": "~1.0"
+  }
+}

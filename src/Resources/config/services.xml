@@ -1,0 +1,39 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="twilio.client" class="Services_Twilio">
+            <argument/>
+            <argument/>
+        </service>
+
+        <service id="twilio.controller" class="Orukusaki\TwilioBundle\Controller\TwilioController">
+            <argument type="service" id="event_dispatcher" />
+        </service>
+
+        <service class="Orukusaki\TwilioBundle\ParamConverter\VoiceCallConverter">
+            <tag name="request.param_converter" priority="-1"/>
+        </service>
+
+        <service id="twilio.converter.inbound" class="Orukusaki\TwilioBundle\ParamConverter\InboundCallConverter">
+            <tag name="request.param_converter"/>
+        </service>
+
+        <service id="twilio.converter.status" class="Orukusaki\TwilioBundle\ParamConverter\CallStatusConverter">
+            <tag name="request.param_converter"/>
+        </service>
+
+        <service id="twilio.converter.recording" class="Orukusaki\TwilioBundle\ParamConverter\RecordingConverter">
+            <tag name="request.param_converter"/>
+        </service>
+
+        <service id="twilio.converter.sms" class="Orukusaki\TwilioBundle\ParamConverter\SmsConverter">
+            <tag name="request.param_converter"/>
+        </service>
+
+    </services>
+
+ </container>

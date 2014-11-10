@@ -1,0 +1,4 @@
+framework:
+    secret: "shhh"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
