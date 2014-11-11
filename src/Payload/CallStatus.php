@@ -1,10 +1,8 @@
 <?php
 namespace Orukusaki\TwilioBundle\Payload;
 
-class CallStatus
+class CallStatus extends VoiceCall
 {
-    use VoiceCall;
-
     /**
      * The outcome of the <Dial> attempt. See the DialCallStatus section below for details.
      */

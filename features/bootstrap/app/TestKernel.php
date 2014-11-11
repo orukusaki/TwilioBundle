@@ -13,6 +13,7 @@ class TestKernel extends Kernel
     {
         return [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
+            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Orukusaki\TwilioBundle\OrukusakiTwilioBundle(),
         ];
     }
@@ -31,12 +32,14 @@ class TestKernel extends Kernel
     /**
      * Gets the container class.
      *
+     * Randomised to ensure a unique container for every instance
+     *
      * @return string The container class
      */
     protected function getContainerClass()
     {
         if (!$this->containerClass) {
-            $this->containerClass = $this->name . md5(uniqid()) . 'ProjectContainer';
+            $this->containerClass = $this->name . spl_object_hash($this) . 'ProjectContainer';
         }
 
         return $this->containerClass;

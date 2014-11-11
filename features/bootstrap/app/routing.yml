@@ -1,0 +1,4 @@
+twilio:
+    resource: "@OrukusakiTwilioBundle/Controller/TwilioController.php"
+    type:     annotation
+    prefix:   twilio

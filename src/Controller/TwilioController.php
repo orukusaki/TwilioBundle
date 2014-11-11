@@ -8,14 +8,15 @@ use Orukusaki\TwilioBundle\Payload\Recording;
 use Orukusaki\TwilioBundle\Payload\Sms;
 use Orukusaki\TwilioBundle\TwilioEvent;
 use Orukusaki\TwiML\Node;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * Class DefaultController
+ * Class TwilioController
  * @Route(service="twilio.controller")
  */
-class DefaultController
+class TwilioController
 {
     /**
      * @var EventDispatcherInterface
@@ -91,7 +92,7 @@ class DefaultController
      *
      * @return Response
      */
-    private function createResponse(Node $twiml)
+    private function createResponse(Node $twiml = null)
     {
         $response = new Response($twiml);
         $response->headers->set('Content-Type', 'text/xml');

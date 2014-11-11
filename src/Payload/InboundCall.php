@@ -2,7 +2,6 @@
 
 namespace Orukusaki\TwilioBundle\Payload;
 
-class InboundCall
+class InboundCall extends VoiceCall
 {
-    use VoiceCall;
 }

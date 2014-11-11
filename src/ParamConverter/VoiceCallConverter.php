@@ -24,7 +24,7 @@ class VoiceCallConverter implements ParamConverterInterface
 
         $event = $request->attributes->get($configuration->getName());
 
-        if (!$event instanceof VoiceCall::class) {
+        if (!$event instanceof VoiceCall) {
             return false;
         }
 
@@ -52,7 +52,7 @@ class VoiceCallConverter implements ParamConverterInterface
      */
     public function supports(ParamConverter $configuration)
     {
-        return class_exists($configuration->getClass())
-            && in_array(VoiceCall::class, class_uses($configuration->getClass()));
+        return VoiceCall::class == $configuration->getClass()
+            ||  is_subclass_of($configuration->getClass(), VoiceCall::class);
     }
 }

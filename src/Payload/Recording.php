@@ -1,10 +1,8 @@
 <?php
 namespace Orukusaki\TwilioBundle\Payload;
 
-class Recording
+class Recording extends VoiceCall
 {
-    use VoiceCall;
-
     /**
      * The URL of the recorded audio
      */
