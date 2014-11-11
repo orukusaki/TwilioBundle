@@ -22,9 +22,7 @@ class TestKernel extends Kernel
     {
         $loader->load(__DIR__.'/config_test.yml');
 
-        foreach ($this->extraConfigs as $extraConfigContent) {
-            $filename = tempnam(sys_get_temp_dir(), 'config') . '.yml';
-            file_put_contents($filename, $extraConfigContent);
+        foreach ($this->extraConfigs as $filename) {
             $loader->load($filename);
         }
     }
@@ -32,7 +30,7 @@ class TestKernel extends Kernel
     /**
      * Gets the container class.
      *
-     * Randomised to ensure a unique container for every instance
+     * Uses the object hash to ensure a unique container for every instance
      *
      * @return string The container class
      */
@@ -47,7 +45,10 @@ class TestKernel extends Kernel
 
     public function addConfig($config)
     {
-        $this->extraConfigs[] = $config;
+        $filename = tempnam(sys_get_temp_dir(), 'config') . '.yml';
+        file_put_contents($filename, $config);
+
+        $this->extraConfigs[] = $filename;
     }
 
     public function getCacheDir()

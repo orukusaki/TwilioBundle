@@ -82,4 +82,60 @@ class VoiceCall
      * @var string
      */
     public $callerName;
+
+    /**
+     * The city of the caller.
+     *
+     * @var string
+     */
+    public $fromCity;
+
+    /**
+     * The state or province of the caller.
+     *
+     * @var string
+     */
+    public $fromState;
+
+    /**
+     * The postal code of the caller.
+     *
+     * @var string
+     */
+    public $fromZip;
+
+    /**
+     * The country of the caller.
+     *
+     * @var string
+     */
+    public $fromCountry;
+
+    /**
+     * The city of the called party.
+     *
+     * @var string
+     */
+    public $toCity;
+
+    /**
+     * The state or province of the called party.
+     *
+     * @var string
+     */
+    public $toState;
+
+    /**
+     * The postal code of the called party.
+     *
+     * @var string
+     */
+    public $toZip;
+
+    /**
+     * The country of the called party.
+     *
+     * @var string
+     */
+    public $toCountry;
 }

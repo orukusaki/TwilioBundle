@@ -37,6 +37,14 @@ class VoiceCallConverter implements ParamConverterInterface
         $event->direction = $request->get('Direction');
         $event->forwardedFrom = $request->get('ForwardedFrom');
         $event->callerName = $request->get('CallerName');
+        $event->fromCity = $request->get('FromCity');
+        $event->fromState = $request->get('FromState');
+        $event->fromZip = $request->get('FromZip');
+        $event->fromCountry = $request->get('FromCountry');
+        $event->toCity = $request->get('ToCity');
+        $event->toState = $request->get('ToState');
+        $event->toZip = $request->get('ToZip');
+        $event->toCountry = $request->get('ToCountry');
 
         $event->query = $request->query->all();
 

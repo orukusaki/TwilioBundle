@@ -20,10 +20,10 @@ class CallStatusConverter implements ParamConverterInterface
     {
         $event = new CallStatus;
 
-        $event->dialCallStatus = $request->get('DialCallStatus');
-        $event->dialCallSid = $request->get('DialCallSid');
-        $event->dialCallDuration = $request->get('DialCallDuration');
+        $event->callDuration = $request->get('CallDuration');
         $event->recordingUrl = $request->get('RecordingUrl');
+        $event->recordingSid = $request->get('RecordingSid');
+        $event->recordingDuration = $request->get('RecordingDuration');
 
         $request->attributes->set($configuration->getName(), $event);
     }

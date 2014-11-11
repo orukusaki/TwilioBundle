@@ -4,28 +4,30 @@ namespace Orukusaki\TwilioBundle\Payload;
 class CallStatus extends VoiceCall
 {
     /**
-     * The outcome of the <Dial> attempt. See the DialCallStatus section below for details.
+     * The duration in seconds of the just-completed call.
+     *
+     * @var string
      */
-    public $dialCallStatus;
+    public $callDuration;
 
     /**
-     * The call sid of the new call leg. This parameter is not sent after dialing a conference.
-     */
-    public $dialCallSid;
-
-    /**
-     * The duration in seconds of the dialed call. This parameter is not sent after dialing a conference.
-     */
-    public $dialCallDuration;
-
-    /**
-     * The URL of the recorded audio. This parameter is only sent if a recording is used with the <Dial> verb,
-     * and does not include recordings from the <Record> verb, Record=True on REST API calls, or <Conference> record.
+     * The URL of the phone call's recorded audio. This parameter is included only if Record=true is set on the REST API request, and does not include recordings from <Dial> or <Record>.
+     *
+     * @var string
      */
     public $recordingUrl;
 
-    public function isSuccessfulResult()
-    {
-        return $this->dialCallStatus == 'completed';
-    }
+    /**
+     * The unique id of the Recording from this call.
+     *
+     * @var string
+     */
+    public $recordingSid;
+
+    /**
+     * The duration of the recorded audio (in seconds).
+     *
+     * @var string
+     */
+    public $recordingDuration;
 }
