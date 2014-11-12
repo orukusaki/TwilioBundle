@@ -18,8 +18,8 @@ class InboundCallConverter implements ParamConverterInterface
      */
     public function apply(Request $request, ParamConverter $configuration)
     {
-        $event = new InboundCall;
-        $request->attributes->set($configuration->getName(), $event);
+        $call = new InboundCall;
+        $request->attributes->set($configuration->getName(), $call);
     }
 
     /**

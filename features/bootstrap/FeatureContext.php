@@ -174,6 +174,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
             'POST',
             $params
         );
+
         $this->response = $this->kernel->handle($request);
     }
 

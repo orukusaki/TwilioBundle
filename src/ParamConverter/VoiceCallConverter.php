@@ -22,31 +22,29 @@ class VoiceCallConverter implements ParamConverterInterface
             return false;
         }
 
-        $event = $request->attributes->get($configuration->getName());
+        $call = $request->attributes->get($configuration->getName());
 
-        if (!$event instanceof VoiceCall) {
+        if (!$call instanceof VoiceCall) {
             return false;
         }
 
-        $event->callSid = $request->get('CallSid');
-        $event->accountSid = $request->get('AccountSid');
-        $event->from = $request->get('From');
-        $event->to = $request->get('To');
-        $event->callStatus = $request->get('CallStatus');
-        $event->apiVersion = $request->get('ApiVersion');
-        $event->direction = $request->get('Direction');
-        $event->forwardedFrom = $request->get('ForwardedFrom');
-        $event->callerName = $request->get('CallerName');
-        $event->fromCity = $request->get('FromCity');
-        $event->fromState = $request->get('FromState');
-        $event->fromZip = $request->get('FromZip');
-        $event->fromCountry = $request->get('FromCountry');
-        $event->toCity = $request->get('ToCity');
-        $event->toState = $request->get('ToState');
-        $event->toZip = $request->get('ToZip');
-        $event->toCountry = $request->get('ToCountry');
-
-        $event->query = $request->query->all();
+        $call->callSid = $request->get('CallSid');
+        $call->accountSid = $request->get('AccountSid');
+        $call->from = $request->get('From');
+        $call->to = $request->get('To');
+        $call->callStatus = $request->get('CallStatus');
+        $call->apiVersion = $request->get('ApiVersion');
+        $call->direction = $request->get('Direction');
+        $call->forwardedFrom = $request->get('ForwardedFrom');
+        $call->callerName = $request->get('CallerName');
+        $call->fromCity = $request->get('FromCity');
+        $call->fromState = $request->get('FromState');
+        $call->fromZip = $request->get('FromZip');
+        $call->fromCountry = $request->get('FromCountry');
+        $call->toCity = $request->get('ToCity');
+        $call->toState = $request->get('ToState');
+        $call->toZip = $request->get('ToZip');
+        $call->toCountry = $request->get('ToCountry');
 
         return true;
     }

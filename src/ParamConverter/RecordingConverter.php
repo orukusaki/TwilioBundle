@@ -18,13 +18,13 @@ class RecordingConverter implements ParamConverterInterface
      */
     public function apply(Request $request, ParamConverter $configuration)
     {
-        $event = new Recording;
+        $recording = new Recording;
 
-        $event->recordingUrl = $request->get('RecordingUrl');
-        $event->recordingDuration = $request->get('RecordingDuration');
-        $event->digits = $request->get('Digits');
+        $recording->recordingUrl = $request->get('RecordingUrl');
+        $recording->recordingDuration = $request->get('RecordingDuration');
+        $recording->digits = $request->get('Digits');
 
-        $request->attributes->set($configuration->getName(), $event);
+        $request->attributes->set($configuration->getName(), $recording);
     }
 
     /**

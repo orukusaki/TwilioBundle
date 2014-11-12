@@ -19,33 +19,31 @@ class SmsConverter implements ParamConverterInterface
      */
     public function apply(Request $request, ParamConverter $configuration)
     {
-        $event = new Sms;
+        $sms = new Sms;
 
-        $event->messageSid = $request->get('CallSid');
-        $event->smsSid = $request->get('AccountSid');
-        $event->accountSid = $request->get('From');
-        $event->from = $request->get('To');
-        $event->to = $request->get('CallStatus');
-        $event->body = $request->get('ApiVersion');
-        $event->numMedia = $request->get('Direction');
+        $sms->messageSid = $request->get('CallSid');
+        $sms->smsSid = $request->get('AccountSid');
+        $sms->accountSid = $request->get('From');
+        $sms->from = $request->get('To');
+        $sms->to = $request->get('CallStatus');
+        $sms->body = $request->get('ApiVersion');
+        $sms->numMedia = $request->get('Direction');
 
-        for ($i = 0; $i <= $event->numMedia; $i++) {
-            $event->mediaContentType[$i] = $request->get('MediaContentType'.$i);
-            $event->mediaUrl[$i] = $request->get('MediaUrl'.$i);
+        for ($i = 0; $i <= $sms->numMedia; $i++) {
+            $sms->mediaContentType[$i] = $request->get('MediaContentType'.$i);
+            $sms->mediaUrl[$i] = $request->get('MediaUrl'.$i);
         }
 
-        $event->fromCity = $request->get('Direction');
-        $event->fromState = $request->get('Direction');
-        $event->fromZip = $request->get('Direction');
-        $event->fromCountry = $request->get('Direction');
-        $event->toCity = $request->get('Direction');
-        $event->toState = $request->get('Direction');
-        $event->toZip = $request->get('Direction');
-        $event->toCountry = $request->get('Direction');
+        $sms->fromCity = $request->get('Direction');
+        $sms->fromState = $request->get('Direction');
+        $sms->fromZip = $request->get('Direction');
+        $sms->fromCountry = $request->get('Direction');
+        $sms->toCity = $request->get('Direction');
+        $sms->toState = $request->get('Direction');
+        $sms->toZip = $request->get('Direction');
+        $sms->toCountry = $request->get('Direction');
 
-        $event->query = $request->query->all();
-
-        $request->attributes->set($configuration->getName(), $event);
+        $request->attributes->set($configuration->getName(), $sms);
     }
 
     /**

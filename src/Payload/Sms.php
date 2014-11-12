@@ -127,9 +127,4 @@ class Sms
      * @var string
      */
     public $toCountry;
-
-    /**
-     * @var array
-     */
-    public $query = [];
 }
