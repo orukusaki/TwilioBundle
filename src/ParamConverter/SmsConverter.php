@@ -21,27 +21,27 @@ class SmsConverter implements ParamConverterInterface
     {
         $sms = new Sms;
 
-        $sms->messageSid = $request->get('CallSid');
-        $sms->smsSid = $request->get('AccountSid');
-        $sms->accountSid = $request->get('From');
-        $sms->from = $request->get('To');
-        $sms->to = $request->get('CallStatus');
-        $sms->body = $request->get('ApiVersion');
-        $sms->numMedia = $request->get('Direction');
+        $sms->messageSid = $request->get('MessageSid');
+        $sms->smsSid = $request->get('SmsSid');
+        $sms->accountSid = $request->get('AccountSid');
+        $sms->from = $request->get('From');
+        $sms->to = $request->get('To');
+        $sms->body = $request->get('Body');
+        $sms->numMedia = $request->get('NumMedia');
 
-        for ($i = 0; $i <= $sms->numMedia; $i++) {
+        for ($i = 0; $i < $sms->numMedia; $i++) {
             $sms->mediaContentType[$i] = $request->get('MediaContentType'.$i);
             $sms->mediaUrl[$i] = $request->get('MediaUrl'.$i);
         }
 
-        $sms->fromCity = $request->get('Direction');
-        $sms->fromState = $request->get('Direction');
-        $sms->fromZip = $request->get('Direction');
-        $sms->fromCountry = $request->get('Direction');
-        $sms->toCity = $request->get('Direction');
-        $sms->toState = $request->get('Direction');
-        $sms->toZip = $request->get('Direction');
-        $sms->toCountry = $request->get('Direction');
+        $sms->fromCity = $request->get('FromCity');
+        $sms->fromState = $request->get('FromState');
+        $sms->fromZip = $request->get('FromZip');
+        $sms->fromCountry = $request->get('FromCountry');
+        $sms->toCity = $request->get('ToCity');
+        $sms->toState = $request->get('ToState');
+        $sms->toZip = $request->get('ToZip');
+        $sms->toCountry = $request->get('ToCountry');
 
         $request->attributes->set($configuration->getName(), $sms);
     }
