@@ -24,33 +24,33 @@ The service will then be available to inject as ```twilio.client```
 
 For inbound calls, sms messages, statuses etc, there is an inbuilt controller. You can add it to your routing using:
 ```yml
-    twilio:
-        resource: "@OrukusakiTwilioBundle/Controller/TwilioController.php"
-        type:     annotation
-        prefix:   twilio
+twilio:
+    resource: "@OrukusakiTwilioBundle/Controller/TwilioController.php"
+    type:     annotation
+    prefix:   twilio
 ```
 
 Whenever an inbound request is received, an event is fired. Create an event listener to process the event, and create a response to be returned:
+```php
+<?php
+namespace Acme\AppBundle\Listener;
 
-    <?php
-    namespace Acme\AppBundle\Listener;
+use Orukusaki\TwilioBundle\TwilioEvent;
+use Orukusaki\TwiML\Voice\Response;
 
-    use Orukusaki\TwilioBundle\TwilioEvent;
-    use Orukusaki\TwiML\Voice\Response;
-
-    class CallHandler
+class CallHandler
+{
+    public function handleCall(TwilioEvent $event)
     {
-        public function handleCall(TwilioEvent $event)
-        {
-            $call = $event->getPayload();
+        $call = $event->getPayload();
 
-            $response = new Response();
-            $response->say('Hi, you are calling from ' . $call->from);
+        $response = new Response();
+        $response->say('Hi, you are calling from ' . $call->from);
 
-            $event->setResponse($response);
-        }
+        $event->setResponse($response);
     }
-
+}
+```
 Adding a response to the event stops propagation. If your event listener doesn't add a response to the event, then other listeners will be called.
 To listen to the event, simply add a definition for your service, with the appropriate tag:
 
