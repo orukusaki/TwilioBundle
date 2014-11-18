@@ -13,11 +13,12 @@ Each part is optional, so for example if you want to implement your own controll
 
 ## Twilio Client
 To use the Twilio API client, you need to add settings to your config.yml:
-    orukusaki_twilio:
-      client:
+```yml
+orukusaki_twilio:
+    client:
         account_id: <your account id>
         token: <your api token>
-
+```
 The service will then be available to inject as ```twilio.client```
 
 ## Receiving Twilio Events
@@ -71,19 +72,20 @@ More examples on https://github.com/orukusaki/TwiML/blob/master/README.md
 ## Callbacks and Recordings
 
 If you're requesting a recording or a dial with a callback, then you need to remember to set the correct url as the 'action' attribute.  Simplest way is to inject the router to your listener, then use it to generate the correct url, like:
-
-    $response->dial('+441142000000')
-             ->withAction($this->router->generate('twilio.callback'));
-
+```php
+$response->dial('+441142000000')
+         ->withAction($this->router->generate('twilio.callback'));
+```
 ## Payloads & ParamConverters
 
 If you want to write your own controllers instead, then you can still make use of the ParamConverters and payload objects
 
 The ParamConvertors will automatically create the request payload objects for you, if you use the correct type-hint:
+```php
+use Orukusaki\TwilioBundle\Payload\InboundCall;
 
-    use Orukusaki\TwilioBundle\Payload\InboundCall;
-
-    public function inboundCallAction(InboundCall $call)
-    {
-        return (new Response)->say('Hi, you are calling from ' . $payload->from);
-    }
+public function inboundCallAction(InboundCall $call)
+{
+    return (new Response)->say('Hi, you are calling from ' . $payload->from);
+}
+```
