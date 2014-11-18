@@ -54,11 +54,11 @@ class CallHandler
 ```
 Adding a response to the event stops propagation. If your event listener doesn't add a response to the event, then other listeners will be called.
 To listen to the event, simply add a definition for your service, with the appropriate tag:
-
-    <service id="my.call.listener" class="Acme\AppBundle\Listener\CallHandler">
-        <tag name="kernel.event_listener" event="twilio.inbound" method="handleCall" />
-    </service>
-
+```xml
+<service id="my.call.listener" class="Acme\AppBundle\Listener\CallHandler">
+    <tag name="kernel.event_listener" event="twilio.inbound" method="handleCall" />
+</service>
+```
 The events you can listen to are:
 * ```twilio.inbound``` An incoming call is received
 * ```twilio.status``` For Status Callbacks
