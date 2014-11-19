@@ -407,16 +407,16 @@
         },
         {
             "name": "orukusaki/twiml",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orukusaki/TwiML.git",
-                "reference": "191d8b9d3104e77cc585c4ac602703871b642af5"
+                "reference": "047827a1494e0078d19644218a387e46dd1ed001"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orukusaki/TwiML/zipball/191d8b9d3104e77cc585c4ac602703871b642af5",
-                "reference": "191d8b9d3104e77cc585c4ac602703871b642af5",
+                "url": "https://api.github.com/repos/orukusaki/TwiML/zipball/047827a1494e0078d19644218a387e46dd1ed001",
+                "reference": "047827a1494e0078d19644218a387e46dd1ed001",
                 "shasum": ""
             },
             "require": {
@@ -448,7 +448,7 @@
                 "twilio",
                 "twiml"
             ],
-            "time": "2014-11-07 11:47:53"
+            "time": "2014-11-19 10:43:32"
         },
         {
             "name": "psr/log",
