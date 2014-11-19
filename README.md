@@ -2,6 +2,7 @@
 Enables Twilio integration in Symfony2 apps
 
 [![Build Status](https://travis-ci.org/orukusaki/TwilioBundle.svg)](https://travis-ci.org/orukusaki/TwilioBundle)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/orukusaki/TwilioBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/orukusaki/TwilioBundle/?branch=master)
 
 This bundle provides:
 * The Twilio client + config to make it available as a service

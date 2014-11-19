@@ -26,6 +26,8 @@ class CallStatusConverter implements ParamConverterInterface
         $event->recordingDuration = $request->get('RecordingDuration');
 
         $request->attributes->set($configuration->getName(), $event);
+
+        return false; // So the VoiceCallConverter also runs
     }
 
     /**

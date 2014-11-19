@@ -25,6 +25,8 @@ class RecordingConverter implements ParamConverterInterface
         $recording->digits = $request->get('Digits');
 
         $request->attributes->set($configuration->getName(), $recording);
+
+        return false; // So the VoiceCallConverter also runs
     }
 
     /**

@@ -1208,16 +1208,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.2.1",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "ed9c0bcffe4639a5b0ff83e399eeb28e7fcc68f0"
+                "reference": "9ca52329bcdd1500de24427542577ebf3fc2f1c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/ed9c0bcffe4639a5b0ff83e399eeb28e7fcc68f0",
-                "reference": "ed9c0bcffe4639a5b0ff83e399eeb28e7fcc68f0",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/9ca52329bcdd1500de24427542577ebf3fc2f1c9",
+                "reference": "9ca52329bcdd1500de24427542577ebf3fc2f1c9",
                 "shasum": ""
             },
             "require": {
@@ -1263,7 +1263,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2014-09-23 10:52:18"
+            "time": "2014-11-17 16:23:49"
         },
         {
             "name": "sebastian/exporter",

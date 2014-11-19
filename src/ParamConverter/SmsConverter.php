@@ -44,6 +44,8 @@ class SmsConverter implements ParamConverterInterface
         $sms->toCountry = $request->get('ToCountry');
 
         $request->attributes->set($configuration->getName(), $sms);
+
+        return true;
     }
 
     /**

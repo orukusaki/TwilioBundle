@@ -20,6 +20,8 @@ class InboundCallConverter implements ParamConverterInterface
     {
         $call = new InboundCall;
         $request->attributes->set($configuration->getName(), $call);
+
+        return false; // So the VoiceCallConverter also runs
     }
 
     /**
