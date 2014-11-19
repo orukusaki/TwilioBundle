@@ -4,10 +4,12 @@ use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
+use Orukusaki\TwilioBundle\Fixture\MockKernel;
 use Orukusaki\TwilioBundle\Payload\CallStatus;
 use Orukusaki\TwilioBundle\Payload\InboundCall;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Defines application features from the specific context.
@@ -15,21 +17,31 @@ use Symfony\Component\HttpFoundation\Request;
 class FeatureContext implements Context, SnippetAcceptingContext
 {
     /**
-     * @var TestKernel
+     * @var MockKernel
      */
     private $kernel;
 
+    /**
+     * @var array
+     */
     private $events = [];
 
+    /**
+     * @var Response
+     */
     private $response;
+
+    public function __construct()
+    {
+        require_once __DIR__ . '/bootstrap.php';
+    }
 
     /**
      * @BeforeScenario
      */
     public function setUp()
     {
-        require_once __DIR__ . '/app/autoload.php';
-        $this->kernel = new TestKernel('test', true);
+        $this->kernel = new MockKernel('test', true);
     }
 
     /**
@@ -154,6 +166,9 @@ class FeatureContext implements Context, SnippetAcceptingContext
         expect($payload)->toBeAnInstanceOf(CallStatus::class);
     }
 
+    /**
+     * @param $eventName
+     */
     private function aListenerIsRegistered($eventName)
     {
         $this->kernel->boot();
@@ -163,6 +178,10 @@ class FeatureContext implements Context, SnippetAcceptingContext
         $dispatcher->addListener($eventName, [$this, 'observeEvent']);
     }
 
+    /**
+     * @param           $path
+     * @param TableNode $table
+     */
     private function aRequestIsReceived($path, TableNode $table)
     {
         $params = [];
@@ -178,6 +197,9 @@ class FeatureContext implements Context, SnippetAcceptingContext
         $this->response = $this->kernel->handle($request);
     }
 
+    /**
+     * @param $event
+     */
     public function observeEvent($event)
     {
         $this->events[] = $event;
